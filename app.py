@@ -62,10 +62,12 @@ def callback():
     ) # id_info returns json response of user's log in data
 
     session["google_id"] = id_info.get("sub")
-    session["family_name"] = id_info.get("family_name") #first name
-    session["given_name"] = id_info.get("given_name") #last name
+    session["email"] = id_info.get("email")
+    session["picture"] = id_info.get("picture")
 
-    return redirect("/protected_area")
+    return id_info 
+
+    # return redirect("/protected_area")
 
 @app.route('/logout')
 def logout():
